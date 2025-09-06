@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌱 किसान सहायक - Farmer Assistant Chatbot</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-seedling"></i>
+                    <h1>किसान सहायक</h1>
+                    <span class="subtitle">Your Farming Assistant</span>
+                </div>
+                <div class="header-controls">
+                    <button id="historyBtn" class="control-btn" title="Chat History">
+                        <i class="fas fa-history"></i>
+                        <span>History</span>
+                    </button>
+                    <button id="newChatBtn" class="control-btn" title="Start New Chat">
+                        <i class="fas fa-plus"></i>
+                        <span>New Chat</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- History Panel -->
+            <div id="historyPanel" class="history-panel">
+                <div class="history-header">
+                    <h3><i class="fas fa-history"></i> Chat History</h3>
+                    <div class="history-controls">
+                        <button id="clearHistoryBtn" class="clear-btn">
+                            <i class="fas fa-trash"></i> Clear All
+                        </button>
+                        <button id="closeHistoryBtn" class="close-btn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div id="historyList" class="history-list">
+                    <div class="history-empty">
+                        <i class="fas fa-comments"></i>
+                        <p>No chat history yet. Start a conversation!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Container -->
+            <div class="chat-container">
+                <div id="chatMessages" class="chat-messages">
+                    <div class="welcome-message">
+                        <div class="welcome-avatar">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div class="welcome-content">
+                            <h2>नमस्ते किसान भाई! 🙏</h2>
+                            <p>Welcome, farmer friend! I'm here to help you with:</p>
+                            <ul>
+                                <li><i class="fas fa-bug"></i> Crop diseases and pest control</li>
+                                <li><i class="fas fa-tint"></i> Irrigation and water management</li>
+                                <li><i class="fas fa-leaf"></i> Soil health and fertilizers</li>
+                                <li><i class="fas fa-sun"></i> Weather and seasonal advice</li>
+                                <li><i class="fas fa-camera"></i> Upload photos for plant diagnosis</li>
+                            </ul>
+                            <p class="welcome-note">You can type in any language - Hindi, English, Tamil, Bengali, or your local language!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Typing Indicator -->
+                <div id="typingIndicator" class="typing-indicator">
+                    <div class="typing-avatar">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="typing-content">
+                        <div class="typing-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <p>AI सहायक is thinking...</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Input Area -->
+        <div class="input-area">
+            <div class="input-container">
+                <!-- Language Selector -->
+                <div class="language-selector">
+                    <select id="languageSelect">
+                        <option value="auto">🌐 Auto-detect</option>
+                        <option value="en">🇬🇧 English</option>
+                        <option value="hi">🇮🇳 हिन्दी</option>
+                        <option value="ta">🇮🇳 தமிழ்</option>
+                        <option value="bn">🇮🇳 বাংলা</option>
+                        <option value="kn">🇮🇳 ಕನ್ನಡ</option>
+                        <option value="ml">🇮🇳 മലയാളം</option>
+                        <option value="te">🇮🇳 తెలుగు</option>
+                        <option value="gu">🇮🇳 ગુજરાતી</option>
+                        <option value="mr">🇮🇳 मराठी</option>
+                        <option value="pa">🇮🇳 ਪੰਜਾਬੀ</option>
+                    </select>
+                </div>
+
+                <!-- File Upload Area -->
+                <div id="fileUploadArea" class="file-upload-area">
+                    <div class="file-preview" id="filePreview"></div>
+                </div>
+
+                <!-- Input Controls -->
+                <div class="input-controls">
+                    <div class="input-wrapper">
+                        <textarea 
+                            id="messageInput" 
+                            placeholder="अपना सवाल पूछें... Ask your question in any language..."
+                            rows="1"
+                            maxlength="2000"
+                        ></textarea>
+                        <div class="input-actions">
+                            <input type="file" id="fileInput" multiple accept="image/*,audio/*,video/*" style="display: none;">
+                            <button id="uploadBtn" class="action-btn upload-btn" title="Upload Photos/Audio/Video">
+                                <i class="fas fa-paperclip"></i>
+                            </button>
+                            <button id="sendBtn" class="action-btn send-btn" title="Send Message">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Send</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner">
+            <i class="fas fa-seedling"></i>
+            <p>Setting up your farming assistant...</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
