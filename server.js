@@ -23,6 +23,14 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+// Serve a minimal service worker from memory
+app.get('/sw.js', (req, res) => {
+  res.set('Content-Type', 'application/javascript');
+  res.send(`self.addEventListener('install', (event) => { self.skipWaiting(); });
+self.addEventListener('activate', (event) => { event.waitUntil(self.clients.claim()); });
+self.addEventListener('fetch', () => {});`);
+});
+
 // Ensure uploads directory exists
 const uploadsDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadsDir)) {
